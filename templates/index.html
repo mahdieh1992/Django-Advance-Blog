@@ -1,0 +1,248 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ {% include 'includes/header_tag.html' %}
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+    <!-- Page Navbar -->
+  <!-- End of Page Navbar -->
+    {% include 'includes/Nav_tag.html' %}
+    <!-- page header -->
+    <header id="home" class="header">
+
+        <div class="overlay">
+               <a  href="#about"><img src="{% static 'imgs/logo.png'  %}" style=" width:150px;height:120px;box-shadow:0 1px 1px 0 rgba(0, 0, 0,0.50)" class="rounded-circle  mt-4 ml-3" ></a>
+        </div>
+        <div class="header-content container">
+            <h1 class="header-title">
+                <span class="up">HI!</span>
+                <span class="down">I'm Mahdieh Mohamadi</span>
+            </h1>
+            <p class="header-subtitle">BackEnd WEB Developer</p>
+
+            <a href="#portfolio"><button class="btn btn-primary">Visit My Works</button></a>
+        </div>
+    </header><!-- end of page header -->
+
+    <!-- about section -->
+    <section class="section " id="about" style="margin-top: -100px">
+        <!-- container -->
+        <div class="container text-center">
+            <!-- about wrapper -->
+            <div class="about">
+
+                    <div class="about-img-holder">
+                        <img src="{{ minfo.image.url }}" class="about-img "
+                            alt="Nothing">
+                    </div>
+                    <div class="about-caption">
+                        <p class="section-subtitle">Who Am I ?</p>
+                        <h2 class="section-title mb-3">{{ minfo.title }}</h2>
+                        <p>
+                            {{ minfo.description }}
+                        </p>
+                       <!-- <button class="btn-rounded btn btn-outline-primary mt-4">Download CV</button>-->
+                    </div>
+
+
+            </div><!-- end of about wrapper -->
+        </div><!-- end of container -->
+    </section> <!-- end of about section -->
+
+    <!-- service section -->
+    <section class="section" id="service">
+        <div class="container text-center">
+            <p class="section-subtitle">What are my skills?</p>
+            <h6 class="section-title mb-6"> My Skills</h6>
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-12">
+                           {% for skill in myskill %}
+                                <h5 class="text-left" style="color: #4a515b ">{{ skill.skillname }}</h5>
+                                 <div class="progress">
+                                     <div class="progress-bar bg-success" role="progressbar" style="width:{{ skill.Degree }}%" aria-valuenow={{ skill.Degree }} aria-valuemin="0" aria-valuemax="100"></div>
+                                 </div>
+                           {% endfor %}
+                </div>
+            </div><!-- end of row -->
+        </div>
+    </section><!-- end of service section -->
+
+    <!-- portfolio section -->
+    <section class="section" id="portfolio">
+        <div class="container text-center">
+            <p class="section-subtitle">What I Did ?</p>
+            <h6 class="section-title mb-6">List of Articles</h6>
+            <!-- row -->
+            <div class="row">
+                {% for object in PortfoliObject %}
+                        <div class="col-md-4">
+                            <a href="Portfoli/detail/{{ object.id }}" class="portfolio-card">
+                                <img src="{{ object.Image.url}}" class="portfolio-card-img shadow-lg p-3 mb-5 rounded" style="width:350px;height:220px"
+                                    alt="Nothing">
+                                <span class="portfolio-card-overlay">
+                                    <span class="portfolio-card-caption">
+                                        <h4>{{object.title}}</h4>
+                                            <p class="font-weight-normal">{{ object.description}}</p>
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
+                {% endfor %}
+
+
+
+            </div><!-- end of row -->
+        </div><!-- end of container -->
+    </section> <!-- end of portfolio section -->
+
+    <!-- pricing section -->
+
+    <!-- section -->
+    <section class="section-sm bg-primary">
+        <!-- container -->
+        <div class="container text-center text-sm-left">
+            <!-- row -->
+            <div class="row align-items-center">
+                <div class="col-sm offset-md-1 mb-4 mb-md-0">
+                    <h6 class="title text-light">Want to work with me?</h6>
+                    <p class="m-0 text-light">Always feel Free to Contact Me</p>
+                </div>
+                <div class="col-sm offset-sm-2 offset-md-3">
+                  <a href="#contact">  <button class="btn btn-lg my-font btn-light rounded">Contact Me</button></a>
+                </div>
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </section> <!-- end of section -->
+
+    <!-- testimonial section -->
+    <section class="section" id="testmonial">
+        <div class="container text-center">
+            <p class="section-subtitle">What Think Client About Me ?</p>
+            <h6 class="section-title mb-6">Testmonial</h6>
+
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="testimonial-card">
+                        <div class="testimonial-card-img-holder">
+                            <img src="{% static 'imgs/avatar2.jpg' %}" class="testimonial-card-img"
+                                alt="nothing">
+                        </div>
+                        <div class="testimonial-card-body">
+                            <p class="testimonial-card-subtitle">I got this certificate in 2022</p>
+                            <h6 class="testimonial-card-title">SQl server</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="testimonial-card">
+                        <div class="testimonial-card-img-holder">
+                            <img src="{% static 'imgs/avatar3.jpg' %}" class="testimonial-card-img"
+                                alt="nothin">
+                        </div>
+                        <div class="testimonial-card-body">
+                            <p class="testimonial-card-subtitle">I got this certificate in 2016</p>
+                            <h6 class="testimonial-card-title">Photoshap</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end of container -->
+    </section> <!-- end of testimonial section -->
+
+    <!-- blog section -->
+    <section class="section" id="blog">
+        <!-- container -->
+        <div class="container text-center">
+            <p class="section-subtitle">Recent Posts</p>
+            <h6 class="section-title mb-6">Blog</h6>
+            <!-- blog-wrapper -->
+            {% for Blog in myBlog %}
+                <div class="blog-card shadow-lg p-2 mb-3 rounded">
+                      <div class="blog-card-header">
+                          <img src="{{ Blog.Image.url }}" class="blog-card-img shadow-lg p-2 mb-3 rounded"
+                        alt="blog">
+                     </div>
+                      <div class="blog-card-body">
+                          <h5 class="blog-card-title">{{ Blog.title }}</h5>
+
+                          <p class="blog-card-caption">
+                                  <a href="#">By: Mahdieh</a>
+                                  <a href="#"><i class="ti-heart text-danger"></i> 234</a>
+                                   <a href="#"><i class="ti-comment"></i> 123</a>
+                          </p>
+                          <p>{{ Blog.description }}</p>
+
+
+                          <a href="#" class="blog-card-link">Read more <i class="ti-angle-double-right"></i></a>
+                     </div>
+               </div><!-- end of blog wrapper -->
+            {% endfor %}
+
+
+        </div><!-- end of container -->
+    </section><!-- end of blog section -->
+
+    <!-- contact section -->
+    <section class="section" id="contact">
+        <div class="container text-center">
+            <p class="section-subtitle">How can you communicate?</p>
+            <h6 class="section-title mb-5">Contact Me</h6>
+            <!-- contact form -->
+            <form action="" class="contact-form col-md-10 col-lg-8 m-auto" method="post">{% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <input type="text" size="50" class="form-control" placeholder="Your Name" required name="name">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <input type="email" class="form-control" placeholder="Enter Email" requried name="email">
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <textarea name="comment" id="comment" rows="6" class="form-control"
+                            placeholder="Write Something"></textarea>
+                    </div>
+                    <div class="form-group col-sm-12 mt-3">
+                        <input type="submit" value="Send Message" class="btn btn-outline-primary rounded" name="send">
+                    </div>
+                </div>
+            </form><!-- end of contact form -->
+        </div><!-- end of container -->
+    </section><!-- end of contact section -->
+
+    <!-- footer -->
+    <div class="container">
+        <footer class="footer">
+            <p class="mb-0">Copyright
+                <script>document.write(new Date().getFullYear())</script> &copy; <a
+                    href="http://www.devcrud.com">DevCRUD</a> Distribution <a
+                    href="https://themewagon.com">ThemeWagon</a>
+            </p>
+            <div class="social-links text-right m-auto ml-sm-auto">
+                <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-twitter-alt"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-google"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-pinterest-alt"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-instagram"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-rss"></i></a>
+            </div>
+        </footer>
+    </div> <!-- end of page footer -->
+
+    <!-- core  -->
+    <script src="{% static 'vendors/jquery/jquery-3.4.1.js' %}"></script>
+    <script src="{% static 'vendors/bootstrap/bootstrap.bundle.js' %}"></script>
+
+    <!-- bootstrap 3 affix -->
+    <script src="{% static 'vendors/bootstrap/bootstrap.affix.js' %}"></script>
+
+    <!-- Meyawo js -->
+    <script src="{% static 'js/meyawo.js' %}"></script>
+
+</body>
+
+</html>

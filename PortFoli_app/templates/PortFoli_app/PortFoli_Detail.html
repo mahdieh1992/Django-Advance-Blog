@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'includes/header_tag.html' %}
+</head>
+<body>
+
+        <div class= container">
+            <h1 class="title text-center m-lg-5">
+                {{porfolidetail.description}}
+            </h1>
+            <img src="{{ porfolidetail.Image.url}}" class="mx-auto d-block m-4 shadow-lg p-3 mb-5 bg-white rounded" >
+            <article class="text-center m-lg-5">
+               {{ porfolidetail.Article}}
+            </article>
+        </div>
+
+
+</body>
+</html>
